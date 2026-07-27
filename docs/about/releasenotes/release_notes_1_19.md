@@ -1,30 +1,35 @@
-## TBD
+---
+id: release_notes_1_19
+title: HumHub 1.19
+---
 
-### New Sign-In & Sign-Up Experience
+## TBD (~September 2026; Beta available)
+
+### Sign-In & Sign-Up
 
 HumHub 1.19 introduces a reworked sign-in and sign-up flow. Signing in now starts with a single identity step: users first enter their email address or username, and HumHub then guides them to the right next step — the password entry for local accounts, or directly to the connected login provider (e.g. your company single sign-on). When a user is forwarded to an external provider, the identity they already typed is passed along, so the provider's login page is pre-filled. Invitation links have also become smarter: if local registration is disabled, invited users are sent straight to the external sign-in provider instead of a registration form they cannot use.
 
-### A New Foundation for External User Management
+### Improved User Management
 
 Many HumHub installations manage their users in external systems — an LDAP directory, a single sign-on provider, or an HR system. With 1.19, HumHub introduces the new **UserSource** architecture, which cleanly separates two questions that used to be mixed together: *how does a user sign in* and *which system owns and manages the user account*. Every user now belongs to exactly one source (for example "local" or "LDAP"), and that source controls the account's lifecycle: which login methods it accepts, which profile attributes are synchronized and locked against manual editing, and what happens when the user disappears from the external system.
 
-For administrators this means external accounts behave far more predictably — no more surprises about which system "wins" when profile data is updated. It also allows standard OAuth2 or SAML clients to be connected without custom HumHub adaptations, and it lays the groundwork for upcoming provisioning standards such as SCIM, where user accounts are created and managed entirely by an external identity system.
+For administrators this means external accounts behave far more predictably. It also allows standard OAuth2 or SAML clients to be connected without custom HumHub adaptations, and it lays the groundwork for upcoming provisioning standards such as SCIM, where user accounts are created and managed entirely by an external identity system.
 
-### Files in the Cloud (S3 & Remote Storage)
+### S3 & Remote Storage
 
 Uploaded files, profile images, logos and other assets no longer have to be stored on the local server. With 1.19, HumHub's storage layer has been rebuilt so that both the data and the asset directories can be mounted to remote storage such as Amazon S3 or any S3-compatible object storage. This makes HumHub much easier to operate in cloud and container environments and is an important building block for scalable, multi-server setups. The whole platform has been adapted for this: image processing, file downloads, profile images and module assets all work against remote storage, with caching in place so that remote mounts do not slow down page rendering.
 
 ### Improved Commenting
 
-Comments received a series of usability improvements as a first step towards the upcoming redesigned comment experience. The comment counter of a post now includes replies, so it reflects the real size of a discussion. Loading older or newer comments has become more predictable: the "Show previous/next comments" links display the actual number of remaining comments and count down while you read on, and opening a comment permalink keeps the view focused around the linked comment. The comment form itself is tidier — the upload and submit buttons only appear once you start writing — and commenting on mobile devices has been polished as well: on iOS, the on-screen keyboard no longer hides the field you are typing in.
+Comments received a series of usability improvements. The comment counter of a post now includes replies, so it reflects the real size of a discussion. Loading older or newer comments has become more predictable: the "Show previous/next comments" links display the actual number of remaining comments and count down while you read on, and opening a comment permalink keeps the view focused around the linked comment. The comment form itself is tidier — the upload and submit buttons only appear once you start writing — and commenting on mobile devices has been polished as well.
 
 ### Post Titles
 
-Posts can now have a title. Administrators decide in the Design settings whether post titles are disabled, optional or required. Titles are shown as a heading above the post content and give streams more structure — especially in communities where posts are used for announcements or longer contributions, readers can scan the stream much faster.
+Posts can now have a title. Administrators decide in the appearance settings whether post titles are disabled, optional or required. Titles are shown as a heading above the post content and give streams more structure — especially in communities where posts are used for announcements or longer contributions, readers can scan the stream much faster.
 
-### Community Modules in the Marketplace
+### Community Modules
 
-The module marketplace can now include modules contributed by the community. Administrators can opt in via the new "Include community modules" option and get access to a wider range of modules beyond the officially maintained ones.
+Community-contributed modules are now clearly marked in the module marketplace, making it easy for administrators to distinguish them from the officially maintained ones. They can be enabled via the new "Include community modules" option, which unlocks a wider range of modules while keeping each module's origin transparent.
 
 ### Under the Hood
 
